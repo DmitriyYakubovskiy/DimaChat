@@ -1,0 +1,6 @@
+﻿namespace DimaChatClient
+{
+    class Client
+    {
+    }
+}
