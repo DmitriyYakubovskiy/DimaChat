@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "hg6PNCNqg9gURAPdx32NDvj1jV3SLoTu3B3i8imNSf8GxFXq3Ai2AaLTywj4zSuJZsdtTPFSKia3RxH2Lfze+A==",
+  "success": true,
+  "projectFilePath": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\DimaChat.Client.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yakub\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.17763.31\\microsoft.windows.sdk.net.ref.10.0.17763.31.nupkg.sha512"
+  ],
+  "logs": []
+}

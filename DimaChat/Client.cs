@@ -1,6 +1,0 @@
-﻿namespace DimaChatClient
-{
-    class Client
-    {
-    }
-}

@@ -1,0 +1,54 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "DimaChat.Server/1.0.0": {
+        "dependencies": {
+          "DimaChat.Client": "1.0.0",
+          "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.17763.31"
+        },
+        "runtime": {
+          "DimaChat.Server.dll": {}
+        }
+      },
+      "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.17763.31": {
+        "runtime": {
+          "Microsoft.Windows.SDK.NET.dll": {
+            "assemblyVersion": "10.0.17763.24",
+            "fileVersion": "10.0.17763.31"
+          },
+          "WinRT.Runtime.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.4.44211"
+          }
+        }
+      },
+      "DimaChat.Client/1.0.0": {
+        "runtime": {
+          "DimaChat.Client.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DimaChat.Server/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.17763.31": {
+      "type": "runtimepack",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DimaChat.Client/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
