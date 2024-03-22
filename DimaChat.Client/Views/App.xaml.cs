@@ -13,7 +13,7 @@ namespace DimaChat.Client
         protected override void OnStartup(StartupEventArgs e)
         {
             var window = new MainWindow();
-            window.DataContext = new ChatWindowViewModel();
+            window.DataContext = new MainWindowViewModel();
             window.Show();
         }
     }

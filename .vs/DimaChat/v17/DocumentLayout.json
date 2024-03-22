@@ -3,52 +3,60 @@
   "WorkspaceRootPath": "D:\\Programming\\Exam\\DimaChat\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|D:\\Programming\\Exam\\DimaChat\\dimachat.client\\views\\mainwindowview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\views\\mainwindowview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|D:\\Programming\\Exam\\DimaChat\\dimachat.client\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|D:\\Programming\\Exam\\DimaChat\\dimachat.client\\views\\mainwindowview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\views\\mainwindowview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{73DC5D4C-CEC4-4C31-BD12-1E4731422F59}|DimaChat.Server\\DimaChat.Server.csproj|d:\\programming\\exam\\dimachat\\dimachat.server\\servermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73DC5D4C-CEC4-4C31-BD12-1E4731422F59}|DimaChat.Server\\DimaChat.Server.csproj|solutionrelative:dimachat.server\\servermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|d:\\programming\\exam\\dimachat\\dimachat.client\\models\\clientmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|D:\\Programming\\Exam\\DimaChat\\dimachat.client\\models\\clientmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\models\\clientmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|d:\\programming\\exam\\dimachat\\dimachat.client\\views\\chatwindowview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\views\\chatwindowview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|d:\\programming\\exam\\dimachat\\dimachat.client\\models\\messagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\models\\messagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|d:\\programming\\exam\\dimachat\\dimachat.client\\views\\chatwindowview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\views\\chatwindowview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|d:\\programming\\exam\\dimachat\\dimachat.client\\views\\mainwindowview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\views\\mainwindowview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|d:\\programming\\exam\\dimachat\\dimachat.client\\viewmodels\\chatwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|D:\\Programming\\Exam\\DimaChat\\dimachat.client\\viewmodels\\chatwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\viewmodels\\chatwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|d:\\programming\\exam\\dimachat\\dimachat.client\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|d:\\programming\\exam\\dimachat\\dimachat.client\\models\\messagescollectionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\models\\messagescollectionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|d:\\programming\\exam\\dimachat\\dimachat.client\\views\\mainwindowview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\views\\mainwindowview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|D:\\Programming\\Exam\\DimaChat\\dimachat.client\\views\\chatwindowview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\views\\chatwindowview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73DC5D4C-CEC4-4C31-BD12-1E4731422F59}|DimaChat.Server\\DimaChat.Server.csproj|d:\\programming\\exam\\dimachat\\dimachat.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|D:\\Programming\\Exam\\DimaChat\\dimachat.client\\views\\chatwindowview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\views\\chatwindowview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|D:\\Programming\\Exam\\DimaChat\\dimachat.client\\views\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\views\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73DC5D4C-CEC4-4C31-BD12-1E4731422F59}|DimaChat.Server\\DimaChat.Server.csproj|D:\\Programming\\Exam\\DimaChat\\dimachat.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73DC5D4C-CEC4-4C31-BD12-1E4731422F59}|DimaChat.Server\\DimaChat.Server.csproj|solutionrelative:dimachat.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|d:\\programming\\exam\\dimachat\\dimachat.client\\commands\\command.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|D:\\Programming\\Exam\\DimaChat\\dimachat.client\\commands\\command.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\commands\\command.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73DC5D4C-CEC4-4C31-BD12-1E4731422F59}|DimaChat.Server\\DimaChat.Server.csproj|d:\\programming\\exam\\dimachat\\dimachat.server\\chatmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{73DC5D4C-CEC4-4C31-BD12-1E4731422F59}|DimaChat.Server\\DimaChat.Server.csproj|D:\\Programming\\Exam\\DimaChat\\dimachat.server\\chatmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73DC5D4C-CEC4-4C31-BD12-1E4731422F59}|DimaChat.Server\\DimaChat.Server.csproj|solutionrelative:dimachat.server\\chatmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|d:\\programming\\exam\\dimachat\\dimachat.client\\views\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A734A375-FF4A-414F-9344-4305A8376145}|DimaChat.Client\\DimaChat.Client.csproj|solutionrelative:dimachat.client\\views\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -67,19 +75,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "MessageModel.cs",
+              "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Models\\MessageModel.cs",
+              "RelativeDocumentMoniker": "DimaChat.Client\\Models\\MessageModel.cs",
+              "ToolTip": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Models\\MessageModel.cs",
+              "RelativeToolTip": "DimaChat.Client\\Models\\MessageModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T05:26:15.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MessagesCollectionModel.cs",
+              "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Models\\MessagesCollectionModel.cs",
+              "RelativeDocumentMoniker": "DimaChat.Client\\Models\\MessagesCollectionModel.cs",
+              "ToolTip": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Models\\MessagesCollectionModel.cs",
+              "RelativeToolTip": "DimaChat.Client\\Models\\MessagesCollectionModel.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAgwAYAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T05:25:28.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "ChatWindowViewModel.cs",
               "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\ViewModels\\ChatWindowViewModel.cs",
               "RelativeDocumentMoniker": "DimaChat.Client\\ViewModels\\ChatWindowViewModel.cs",
               "ToolTip": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\ViewModels\\ChatWindowViewModel.cs",
               "RelativeToolTip": "DimaChat.Client\\ViewModels\\ChatWindowViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAABYAAAAAAAAAAAAgwDUAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-20T14:45:47.964Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "ChatModel.cs",
               "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Server\\ChatModel.cs",
               "RelativeDocumentMoniker": "DimaChat.Server\\ChatModel.cs",
@@ -87,25 +121,24 @@
               "RelativeToolTip": "DimaChat.Server\\ChatModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T14:40:43.61Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-20T14:40:43.61Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Views\\App.xaml.cs",
               "RelativeDocumentMoniker": "DimaChat.Client\\Views\\App.xaml.cs",
               "ToolTip": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Views\\App.xaml.cs",
               "RelativeToolTip": "DimaChat.Client\\Views\\App.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-20T14:40:27.671Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "Command.cs",
               "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Commands\\Command.cs",
               "RelativeDocumentMoniker": "DimaChat.Client\\Commands\\Command.cs",
@@ -118,20 +151,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "ChatWindowView.xaml.cs",
               "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Views\\ChatWindowView.xaml.cs",
               "RelativeDocumentMoniker": "DimaChat.Client\\Views\\ChatWindowView.xaml.cs",
               "ToolTip": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Views\\ChatWindowView.xaml.cs",
               "RelativeToolTip": "DimaChat.Client\\Views\\ChatWindowView.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAA4AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-20T14:36:41.864Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "ChatWindowView.xaml",
               "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Views\\ChatWindowView.xaml",
               "RelativeDocumentMoniker": "DimaChat.Client\\Views\\ChatWindowView.xaml",
@@ -143,33 +176,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "MainWindowView.xaml.cs",
               "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Views\\MainWindowView.xaml.cs",
               "RelativeDocumentMoniker": "DimaChat.Client\\Views\\MainWindowView.xaml.cs",
               "ToolTip": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Views\\MainWindowView.xaml.cs",
               "RelativeToolTip": "DimaChat.Client\\Views\\MainWindowView.xaml.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABoAAAAnAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-20T14:34:29.238Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "MainWindowViewModel.cs",
               "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\ViewModels\\MainWindowViewModel.cs",
               "RelativeDocumentMoniker": "DimaChat.Client\\ViewModels\\MainWindowViewModel.cs",
               "ToolTip": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\ViewModels\\MainWindowViewModel.cs",
               "RelativeToolTip": "DimaChat.Client\\ViewModels\\MainWindowViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAIAAAAkAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-20T14:33:55.254Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "MainWindowView.xaml",
               "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Views\\MainWindowView.xaml",
               "RelativeDocumentMoniker": "DimaChat.Client\\Views\\MainWindowView.xaml",
@@ -181,39 +214,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ServerModel.cs",
-              "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Server\\ServerModel.cs",
-              "RelativeDocumentMoniker": "DimaChat.Server\\ServerModel.cs",
-              "ToolTip": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Server\\ServerModel.cs",
-              "RelativeToolTip": "DimaChat.Server\\ServerModel.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAowDoAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T14:22:46.261Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ClientModel.cs",
               "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Models\\ClientModel.cs",
               "RelativeDocumentMoniker": "DimaChat.Client\\Models\\ClientModel.cs",
               "ToolTip": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\Models\\ClientModel.cs",
               "RelativeToolTip": "DimaChat.Client\\Models\\ClientModel.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAA4wC8AAAAhAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAgwBgAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-20T14:22:32.599Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 3,
+              "Title": "ServerModel.cs",
+              "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Server\\ServerModel.cs",
+              "RelativeDocumentMoniker": "DimaChat.Server\\ServerModel.cs",
+              "ToolTip": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Server\\ServerModel.cs",
+              "RelativeToolTip": "DimaChat.Server\\ServerModel.cs",
+              "ViewState": "AQIAAE0AAAAAAAAAAAAAwGEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T14:22:46.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Server\\Program.cs",
               "RelativeDocumentMoniker": "DimaChat.Server\\Program.cs",
               "ToolTip": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Server\\Program.cs",
               "RelativeToolTip": "DimaChat.Server\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAmAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-20T14:22:39.217Z",
               "EditorCaption": ""

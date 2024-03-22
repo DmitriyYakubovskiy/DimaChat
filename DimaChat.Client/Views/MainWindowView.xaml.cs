@@ -1,7 +1,5 @@
-﻿using DimaChat.Client.Models;
-using DimaChat.Client.ViewModels;
+﻿using DimaChat.Client.ViewModels;
 using DimaChat.Client.Views;
-using System.Net.Sockets;
 using System.Windows;
 
 namespace DimaChat.Client
@@ -13,7 +11,7 @@ namespace DimaChat.Client
     {
         private string ip;
         private int port;
-        private ClientModel client;
+        private string name;
 
         public MainWindow()
         {
@@ -24,9 +22,9 @@ namespace DimaChat.Client
         {
             ip=IpTextBox.Text;
             port=Convert.ToInt32(PortTextBox.Text);
-            client = new ClientModel();
-            var window = new ChatWindowView(client);
-            window.DataContext = new ChatWindowViewModel();
+            name=NameTextBox.Text;
+            var window = new ChatWindowView(this);
+            window.DataContext = new ChatWindowViewModel(name,ip, port);
             window.Show();
         }
     }

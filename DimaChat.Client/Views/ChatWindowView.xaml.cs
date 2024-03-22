@@ -1,5 +1,4 @@
-﻿using DimaChat.Client.Models;
-using System.Windows;
+﻿using System.Windows;
 
 namespace DimaChat.Client.Views
 {
@@ -8,19 +7,10 @@ namespace DimaChat.Client.Views
     /// </summary>
     public partial class ChatWindowView : Window
     {
-        private int index = 0;
-        private ClientModel client;
-
-        public ChatWindowView(ClientModel client)
+        public ChatWindowView(Window window)
         {
+            Owner = window;
             InitializeComponent();
-            this.client = new ClientModel();
-            this.client.Connect();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            client.SendMessage(index,MessageTextBox.Text);
         }
     }
 }

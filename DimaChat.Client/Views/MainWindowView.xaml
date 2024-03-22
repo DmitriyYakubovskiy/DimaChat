@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DimaChat.Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -16,13 +16,15 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
         
         <Button Grid.Column="0" Grid.Row="0" Content="Start" Click="Button_Click"/>
         <TextBox Grid.Column="0" Grid.Row="1" Text="127.0.0.1" Name="IpTextBox"/>
         <TextBox Grid.Column="0" Grid.Row="2" Text="1111" Name="PortTextBox"/>
-        
+        <TextBox Grid.Column="0" Grid.Row="3" Text="Name" Name="NameTextBox"/>
+
 
         <ListBox
         Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"

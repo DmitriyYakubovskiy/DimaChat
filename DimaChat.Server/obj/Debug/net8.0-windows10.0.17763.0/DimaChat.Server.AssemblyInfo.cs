@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DimaChat.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf90021e019043af609df700ec13439c9e9a370c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+079e301ec867dd723bdd6c391640ea296572cf61")]
 [assembly: System.Reflection.AssemblyProductAttribute("DimaChat.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DimaChat.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

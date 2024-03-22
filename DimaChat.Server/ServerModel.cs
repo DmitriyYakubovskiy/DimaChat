@@ -1,9 +1,9 @@
 ﻿using System.Net.Sockets;
 using System.Net;
 using DimaChat.Client.Models;
-using System.Text;
 using System.IO;
-using Windows.Media.Protection.PlayReady;
+using System.Text;
+using System.Reflection.PortableExecutable;
 
 namespace DimaChat.Server
 {
@@ -19,6 +19,15 @@ namespace DimaChat.Server
         {
             this.ip = ip;
             this.port = port;
+        }
+
+        public void Stop()
+        {
+            tcpListener.Stop(); 
+            for(int i= 0; i < clients.Count; i++)
+            {
+                clients[i].Close();
+            } 
         }
 
         public void Start()
@@ -39,11 +48,12 @@ namespace DimaChat.Server
             }
         }
 
-        protected internal void RemoveConnection(string id)
+        private void RemoveConnection(string id)
         {
             ClientModel client = clients.FirstOrDefault(c => c.Id == id);
             if (client != null)
             {
+                Console.WriteLine($"{client.Name} disconnect!");
                 clients.Remove(client);
                 client.Close();
             }
@@ -55,20 +65,56 @@ namespace DimaChat.Server
             while (true)
             {
                 TcpClient tcpClient = await tcpListener.AcceptTcpClientAsync();
+                ClientModel client = new ClientModel(tcpClient, new StreamReader(tcpClient.GetStream()));
+                clients.Add(client);
 
-                ClientModel clientObject = new ClientModel(tcpClient);
-                clients.Add(clientObject);
-                Console.WriteLine("Connect!");
-                await clientObject.GetMessages();
+                Thread clientThread = new Thread(() => ReceiveMessageAsync(clients[clients.Count-1])) { IsBackground = true };
+                clientThread.Start();
+
+                await Task.Delay(10);
+                Console.WriteLine($"{tcpClient.Client.RemoteEndPoint} Connect!"); ;
             }
         }
 
-        private void SendMessage(TcpClient tcpClient, string message)
+        private async Task ReceiveMessageAsync(ClientModel client)
         {
-            var writer = new StreamWriter(tcpClient.GetStream(), Encoding.UTF8);
-            writer.WriteLine(message);
-            writer.Flush();
-            writer.Close();
+            try
+            {
+                while (true)
+                {
+                    string? message = await client.GetStreamReader().ReadLineAsync();
+                    var messages=message.Split('\t');
+                    if (string.IsNullOrEmpty(client.Name)) client.Name = messages[1];
+                    if (string.IsNullOrEmpty(messages[2])) continue;
+                    Console.WriteLine($"{client.Name} отправил сообщение");
+                    await SendMessage(client, message);
+                    await Task.Delay(10);
+                }
+            }
+            catch (SocketException ex)
+            {
+                Console.WriteLine($"Socket exception: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+            }
+            finally
+            {
+                RemoveConnection(client.Id);
+            }
+        }
+
+        private async Task SendMessage(ClientModel client, string message)
+        {
+            for (int i = 0; i < clients.Count; i++)
+            {
+                if (clients[i] != client)
+                {
+                    byte[] data = Encoding.Unicode.GetBytes(message);
+                    await clients[i].GetStream().WriteAsync(data, 0, data.Length);
+                }
+            }
         }
     }
 }

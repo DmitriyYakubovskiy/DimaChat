@@ -1,8 +1,3 @@
-D:\Programming\Exam\DimaChat\DimaChat.Client\obj\Debug\net8.0-windows10.0.17763.0\Views\App.g.cs
-D:\Programming\Exam\DimaChat\DimaChat.Client\obj\Debug\net8.0-windows10.0.17763.0\Views\ChatWindowView.g.cs
-D:\Programming\Exam\DimaChat\DimaChat.Client\obj\Debug\net8.0-windows10.0.17763.0\Views\MainWindowView.g.cs
-D:\Programming\Exam\DimaChat\DimaChat.Client\obj\Debug\net8.0-windows10.0.17763.0\DimaChat.Client_MarkupCompile.cache
-D:\Programming\Exam\DimaChat\DimaChat.Client\obj\Debug\net8.0-windows10.0.17763.0\DimaChat.Client_MarkupCompile.lref
 D:\Programming\Exam\DimaChat\DimaChat.Client\bin\Debug\net8.0-windows10.0.17763.0\DimaChat.Client.exe
 D:\Programming\Exam\DimaChat\DimaChat.Client\bin\Debug\net8.0-windows10.0.17763.0\DimaChat.Client.deps.json
 D:\Programming\Exam\DimaChat\DimaChat.Client\bin\Debug\net8.0-windows10.0.17763.0\DimaChat.Client.runtimeconfig.json
@@ -10,6 +5,11 @@ D:\Programming\Exam\DimaChat\DimaChat.Client\bin\Debug\net8.0-windows10.0.17763.
 D:\Programming\Exam\DimaChat\DimaChat.Client\bin\Debug\net8.0-windows10.0.17763.0\DimaChat.Client.pdb
 D:\Programming\Exam\DimaChat\DimaChat.Client\bin\Debug\net8.0-windows10.0.17763.0\Microsoft.Windows.SDK.NET.dll
 D:\Programming\Exam\DimaChat\DimaChat.Client\bin\Debug\net8.0-windows10.0.17763.0\WinRT.Runtime.dll
+D:\Programming\Exam\DimaChat\DimaChat.Client\obj\Debug\net8.0-windows10.0.17763.0\Views\ChatWindowView.g.cs
+D:\Programming\Exam\DimaChat\DimaChat.Client\obj\Debug\net8.0-windows10.0.17763.0\Views\MainWindowView.g.cs
+D:\Programming\Exam\DimaChat\DimaChat.Client\obj\Debug\net8.0-windows10.0.17763.0\Views\App.g.cs
+D:\Programming\Exam\DimaChat\DimaChat.Client\obj\Debug\net8.0-windows10.0.17763.0\DimaChat.Client_MarkupCompile.cache
+D:\Programming\Exam\DimaChat\DimaChat.Client\obj\Debug\net8.0-windows10.0.17763.0\DimaChat.Client_MarkupCompile.lref
 D:\Programming\Exam\DimaChat\DimaChat.Client\obj\Debug\net8.0-windows10.0.17763.0\Views\ChatWindowView.baml
 D:\Programming\Exam\DimaChat\DimaChat.Client\obj\Debug\net8.0-windows10.0.17763.0\Views\MainWindowView.baml
 D:\Programming\Exam\DimaChat\DimaChat.Client\obj\Debug\net8.0-windows10.0.17763.0\DimaChat.Client.g.resources
