@@ -3,14 +3,13 @@ using DimaChat.Client.Models;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows;
 using System.Windows.Input;
 
 namespace DimaChat.Client.ViewModels
 {
     public class ChatWindowViewModel : INotifyPropertyChanged
     {
-        private int index = 0;
+        private int index = 1;
         private ClientModel client;
 
         public string Message
@@ -24,34 +23,33 @@ namespace DimaChat.Client.ViewModels
         }
 
         public ICommand SendMessageCommand => sendMessageCommand;
-        public IReadOnlyCollection<MessageModel> Messages => messagesCollection.Messages;
+        public IReadOnlyCollection<MessageModel> Messages => messageCollection.Messages;
 
-        private MessagesCollectionModel messagesCollection;
+        private MessageModelsCollection messageCollection;
         private string message="";
         private readonly Command sendMessageCommand;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public ChatWindowViewModel(string name, string ip, int port)
+        public ChatWindowViewModel(ClientModel client)
         {
-            messagesCollection = new MessagesCollectionModel();
-            messagesCollection.CollectionChanged += (_, e) =>
+            messageCollection = client.GetMessageModelsCollection();
+            messageCollection.CollectionChanged += (_, e) =>
             {
                 if (e.Action == NotifyCollectionChangedAction.Add)
                 {
                     OnPropertyChanged(nameof(Messages));
                 }
             };
-            client = new ClientModel(messagesCollection);
-            client.Name = name;
-            client?.Connect();
+            this.client = client;
             sendMessageCommand = new DelegateCommand(_ => SendMessage());
         }
 
         public void SendMessage()
         {
             client.SendMessage(index,message);
-            message = "";
+            message = String.Empty;
+            OnPropertyChanged(nameof(Message));
         }
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)

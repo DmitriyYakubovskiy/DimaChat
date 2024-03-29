@@ -1,4 +1,4 @@
-﻿using DimaChat.Server;
+﻿using DimaChat.Server.Models;
 
 ServerModel server = new ServerModel("127.0.0.1", 8080);
 server.Start();

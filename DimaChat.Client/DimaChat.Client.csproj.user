@@ -3,12 +3,30 @@
   <PropertyGroup />
   <ItemGroup />
   <ItemGroup>
+    <Compile Update="Views\AddChatView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\RegisterView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\ChatWindowView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\LogInView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Views\AddChatView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\RegisterView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\ChatWindowView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\LogInView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

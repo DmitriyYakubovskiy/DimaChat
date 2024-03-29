@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DimaChat.Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="400">
+        Title="MainWindow" Height="450" Width="400"
+        WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -18,17 +19,15 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        
-        
-        <Button Grid.Column="0" Grid.Row="0" Content="Start" Click="Button_Click"/>
-        <TextBox Grid.Column="0" Grid.Row="1" Text="127.0.0.1" Name="IpTextBox"/>
-        <TextBox Grid.Column="0" Grid.Row="2" Text="1111" Name="PortTextBox"/>
-        <TextBox Grid.Column="0" Grid.Row="3" Text="Name" Name="NameTextBox"/>
+
+
+        <Button Grid.Column="0" Grid.Row="0" Content="Add Chat" Command="{Binding AddChatCommand}"/>
+        <TextBox Grid.Column="0" Grid.Row="1" Text="{Binding Client.Name}" Name="NameTextBox" IsReadOnly="True"/>
 
 
         <ListBox
         Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"
-        ItemsSource="{Binding Books}"
+        ItemsSource="{Binding Chats}"
         HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate >
@@ -37,10 +36,10 @@
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding Title}" HorizontalAlignment="Center" FontFamily="Tahoma" FontSize="14" Width="100"/>
+                        <TextBlock Grid.Column="0" Text="{Binding Name}" HorizontalAlignment="Center" FontFamily="Tahoma" FontSize="14" Width="100"/>
                         <Button Grid.Column="1" Content="Open"
                             Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}},Path=DataContext.EditBookCommand}"
-                            CommandParameter="{Binding}"  Width="65"/>
+                            CommandParameter="{Binding OpenChatCommand}"  Width="65"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

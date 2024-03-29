@@ -1,9 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "hg6PNCNqg9gURAPdx32NDvj1jV3SLoTu3B3i8imNSf8GxFXq3Ai2AaLTywj4zSuJZsdtTPFSKia3RxH2Lfze+A==",
+  "dgSpecHash": "b714RlOcNQIfRzLocjW47RXT5KtZOtgCp0J6rkBgyZ3cNbouI+1if6xY1lUOArk/0p3kWaF8S/UJceOneMqX9Q==",
   "success": true,
   "projectFilePath": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\DimaChat.Client.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\yakub\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
+    "C:\\Users\\yakub\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\yakub\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\8.0.0\\microsoft.extensions.configuration.fileextensions.8.0.0.nupkg.sha512",
+    "C:\\Users\\yakub\\.nuget\\packages\\microsoft.extensions.configuration.json\\8.0.0\\microsoft.extensions.configuration.json.8.0.0.nupkg.sha512",
+    "C:\\Users\\yakub\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\8.0.0\\microsoft.extensions.fileproviders.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\yakub\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\8.0.0\\microsoft.extensions.fileproviders.physical.8.0.0.nupkg.sha512",
+    "C:\\Users\\yakub\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\8.0.0\\microsoft.extensions.filesystemglobbing.8.0.0.nupkg.sha512",
+    "C:\\Users\\yakub\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\yakub\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "C:\\Users\\yakub\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
     "C:\\Users\\yakub\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.17763.31\\microsoft.windows.sdk.net.ref.10.0.17763.31.nupkg.sha512"
   ],
   "logs": []

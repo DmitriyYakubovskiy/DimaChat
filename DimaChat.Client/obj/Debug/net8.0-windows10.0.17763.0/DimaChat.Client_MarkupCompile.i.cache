@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\Programming\Exam\DimaChat\DimaChat.Client\Views\App.xaml
-2-1779225380
+52034064819
 
-151292333907
-200-444898304
-Views\ChatWindowView.xaml;Views\MainWindowView.xaml;
+25765109378
+208-1786189436
+Views\AddChatView.xaml;Views\ChatWindowView.xaml;Views\LogInView.xaml;Views\MainWindowView.xaml;Views\RegisterView.xaml;
 
-True
+False
 

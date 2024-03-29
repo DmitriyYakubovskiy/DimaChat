@@ -1,4 +1,5 @@
 ﻿using DimaChat.Client.ViewModels;
+using DimaChat.Client.Views;
 using System.Windows;
 
 namespace DimaChat.Client
@@ -12,8 +13,8 @@ namespace DimaChat.Client
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            var window = new MainWindow();
-            window.DataContext = new MainWindowViewModel();
+            var window = new LogInView();
+            window.DataContext = new LogInViewModel(window);
             window.Show();
         }
     }

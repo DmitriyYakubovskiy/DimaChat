@@ -10,14 +10,14 @@ namespace DimaChat.Client.Models
             get => name;
             set
             {
-                name= value;
+                name = value;
                 OnPropertyChanged();
             }
         }
 
         public string Content
         {
-            get=> content;
+            get => content;
             set
             {
                 name = value;
@@ -46,6 +46,11 @@ namespace DimaChat.Client.Models
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        public override string ToString()
+        {
+            return $"{addresseeId}\t{name}\t{content}";
+        }
 
         public object Clone()
         {
