@@ -1,14 +1,23 @@
 ﻿using DimaChat.Client.Commands;
-using DimaChat.Client.Enums;
-using DimaChat.Client.Models;
+using DimaChat.Client.Services;
+using DimaChat.Client.Views;
+using DimaChat.DataAccess.Models;
+using Microsoft.AspNetCore.SignalR.Client;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
 
 namespace DimaChat.Client.ViewModels;
 public class RegisterViewModel
-{
+{    public ICommand OkCommand => okCommand;
+    public ICommand CancelCommand => cancelCommand;
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    private ClientModel client;
     public ClientModel Client
     {
         get => client;
@@ -19,15 +28,10 @@ public class RegisterViewModel
         }
     }
 
-    public ICommand OkCommand => okCommand;
-    public ICommand CancelCommand => cancelCommand;
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    private ClientModel client;
+    private Window window;
     private Command cancelCommand;
     private Command okCommand;
-    private Window window;
+    private bool? isRegistered = null!;
 
     public RegisterViewModel(Window window)
     {
@@ -35,51 +39,51 @@ public class RegisterViewModel
         cancelCommand = new DelegateCommand(_ => Cancel());
         client = new ClientModel();
         this.window = window;
-        this.window.Closing += OnWindowClosing;
     }
 
-    private void OnWindowClosing(object sender, CancelEventArgs e)
+    private void SetRegistration(bool? b)
     {
-        //client.Close();
+        isRegistered = b;
     }
 
     private async void Ok()
     {
-        //try
-        //{
-            if (!CanOk()) return;
-            client.Connect();
-            int count = client.GetCountMessages();
-            client.SendMessage((int)ServerCommands.Registration, client.Password);
-            MessageModel messageModel = client.GetLastMessage();
+        try
+        {
+            HubConnection connection = App.HubConnectionConfiguration();
+
+            DimaChatService signal = new DimaChatService(connection);
+            await signal.ConnectAsync();
+            await signal.SendRegistrationMessage(client.Name, client.Password);
+            signal.ReceiveRegistrationMessage();
+            signal.RegistartionResponseArrived+=SetRegistration;
+            Stopwatch stopwatch = Stopwatch.StartNew();
             while (true)
             {
-                messageModel = client.GetLastMessage();
-                if (messageModel?.Name == "server")
-                {
-                    break;
-                }
-                await Task.Delay(1000);
+                if (isRegistered != null || stopwatch.Elapsed.TotalSeconds >= 10) break;
+                Task.Delay(100).Wait();
             }
+            stopwatch.Stop();
 
-            if (messageModel?.AddresseeId != (int)ServerCommands.RegistrationResult)
+            if (isRegistered == null) MessageBox.Show("Превышено время ожидания");
+            else if (isRegistered == true)
             {
-                MessageBox.Show("Ошибка2");
-                return;
+                window.Close();
             }
-            if (messageModel?.Content != "Ok")
+            else
             {
-                MessageBox.Show("Неверное имя или пароль");
-                return;
+                MessageBox.Show("Ошибка");
             }
-            window.Close();
-        //}
-        //catch (Exception ex)
-        //{
-        //    client.Close();
-        //    window.Close();
-        //    MessageBox.Show($"Exception: {ex.Message}");
-        //}
+            signal.RegistartionResponseArrived-=SetRegistration;
+        }
+        catch (SocketException ex)
+        {
+            MessageBox.Show($"SocketException: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Exception: {ex.Message}");
+        }
     }
 
     private bool CanOk()

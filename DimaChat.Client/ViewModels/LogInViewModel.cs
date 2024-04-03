@@ -1,97 +1,118 @@
 ﻿using DimaChat.Client.Commands;
+using DimaChat.Client.Services;
+using DimaChat.Client.Views;
+using DimaChat.DataAccess.Models;
+using Microsoft.AspNetCore.SignalR.Client;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using DimaChat.Client.Models;
-using System.Windows;
-using DimaChat.Client.Enums;
 using System.Diagnostics;
+using System.Net.Sockets;
+using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Input;
 
 namespace DimaChat.Client.ViewModels;
 
-public class LogInViewModel
-{
-    public ClientModel Client
-    {
-        get => client;
-        set
-        {
-            client = value;
-            OnPropertyChanged();
-        }
-    }
-
+public class LogInViewModel:INotifyPropertyChanged
+{    
     public ICommand OkCommand => okCommand;
     public ICommand RegCommand => regCommand;
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
+    private string name;
+    public string Name
+    {
+        get => name;
+        set
+        {
+            name = value;
+            OnPropertyChanged(nameof(Name));
+        }
+    }
+
+    private string password;
+    public string Password
+    {
+        get => password;
+        set
+        {
+            password = value;
+            OnPropertyChanged(nameof(Password));
+        }
+    }
+
     private ClientModel client;
+    private Window window;
     private Command okCommand;
     private Command regCommand;
-    private Window window;
+    private bool isAuthorized = false;
 
     public LogInViewModel(Window window)
     {
         okCommand = new DelegateCommand(_ => Ok());
         regCommand = new DelegateCommand(_ => Reg());
-        client = new ClientModel();
         this.window = window;
-        this.window.Closing += OnWindowClosing;
     }
 
-    private void OnWindowClosing(object sender, CancelEventArgs e)
+    private void SetAuthorizationInfo(ClientModel client)
     {
-        client.Close();
+        isAuthorized = true;
+        if (client == null) this.client = null!;
+        else this.client=client.Clone() as ClientModel;
     }
 
     private async void Ok()
     {
-        //try
-        //{
-        client.Connect();
-        int count = client.GetCountMessages();
-        client.SendMessage((int)ServerCommands.VerificationData, client.Password);
-        MessageModel messageModel = client.GetLastMessage();
-
-        Stopwatch stopwatch = new Stopwatch();
-        stopwatch.Start();
-        while (true)
+        try
         {
-            messageModel = client.GetLastMessage();
-            if (messageModel?.Name == "server")
+            HubConnection connection = App.HubConnectionConfiguration();
+            DimaChatService signal = new DimaChatService(connection);
+            int waitingTime = 10;
+
+            await signal.ConnectAsync();
+            signal.ReceiveAuthorizeMessage();
+            await signal.SendAuthorizeMessage(Name, Password);
+            signal.AuthorizationResponseArrived += SetAuthorizationInfo;
+
+            Name = String.Empty;
+            Password = String.Empty;
+            OnPropertyChanged();
+
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            while (true)
             {
-                break;
+                if (isAuthorized) break;
+                if (stopwatch.Elapsed.TotalSeconds >= waitingTime)
+                {
+                    MessageBox.Show("Превышено время ожидания");
+                    signal.AuthorizationResponseArrived -= SetAuthorizationInfo;
+                    return;
+                }
+                Task.Delay(100).Wait();
             }
-            if (stopwatch.ElapsedMilliseconds >= 10000)
+            stopwatch.Stop();
+
+            if (client!=null)
             {
-                MessageBox.Show("Превышено время ожидания!");
-                stopwatch.Stop();
-                return;
+                var mainWindow = new MainWindow(window);
+                mainWindow.DataContext = new MainWindowViewModel(mainWindow, client, signal);
+                mainWindow.Show();
             }
-            await Task.Delay(1000);
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль");
+            }
+            signal.AuthorizationResponseArrived -= SetAuthorizationInfo;
+            isAuthorized = false;
         }
-
-        if (messageModel?.AddresseeId != (int)ServerCommands.VerificationResult)
+        catch(SocketException ex)
         {
-            MessageBox.Show("Ошибка2");
-            return;
+            MessageBox.Show($"SocketException: {ex.Message}");
         }
-        if (messageModel?.Content != "Ok")
+        catch (Exception ex)
         {
-            MessageBox.Show("Неверное имя или пароль");
-            return;
+            MessageBox.Show($"Exception: {ex.Message}");
         }
-
-        var mainWindow = new MainWindow(window);
-        var viewModel = new MainWindowViewModel(mainWindow, client);
-        mainWindow.DataContext = viewModel;
-        if (mainWindow.ShowDialog() != true) return;
-        //}
-        //catch (Exception ex)
-        //{
-        //    MessageBox.Show($"Exception: {ex.Message}");
-        //}
     }
 
     private void Reg()

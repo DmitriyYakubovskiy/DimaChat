@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "C6zhMC6bfBctSreZdgyCq65cwGJV84ZX5xqX7QtlPTRs2osASU1HBdED1BrvVtqDV6OALcHFXbVmldMrNtx+Bw==",
+  "dgSpecHash": "qumIpRJthHpWCULN/LQ5scD+f8AvR76iKCJ/Cf2lXlN+BFb8Kf3f7Q7y2PPqackBPv/TKKc1LMpb6nABey+srA==",
   "success": true,
   "projectFilePath": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Server\\DimaChat.Server.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\yakub\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\yakub\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\yakub\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.3\\microsoft.entityframeworkcore.8.0.3.nupkg.sha512",
     "C:\\Users\\yakub\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.3\\microsoft.entityframeworkcore.abstractions.8.0.3.nupkg.sha512",
@@ -29,8 +30,7 @@
     "C:\\Users\\yakub\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\8.0.2\\npgsql.entityframeworkcore.postgresql.8.0.2.nupkg.sha512",
     "C:\\Users\\yakub\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "C:\\Users\\yakub\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
-    "C:\\Users\\yakub\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
-    "C:\\Users\\yakub\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.17763.31\\microsoft.windows.sdk.net.ref.10.0.17763.31.nupkg.sha512"
+    "C:\\Users\\yakub\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }

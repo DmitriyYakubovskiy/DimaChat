@@ -1,6 +1,6 @@
 ﻿using DimaChat.Client.Commands;
-using DimaChat.Client.Enums;
-using DimaChat.Client.Models;
+using DimaChat.Client.Services;
+using DimaChat.DataAccess.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -8,44 +8,50 @@ using System.Windows.Input;
 
 namespace DimaChat.Client.ViewModels;
 
-public class AddChatViewModel
+public class AddChatViewModel: INotifyPropertyChanged
 {
-    private ChatModel chatModel;
-    public ChatModel ChatModel
-    {
-        get => chatModel;
-        set
-        {
-            chatModel = value;
-        }
-    }
-    private Window window;
-    public event PropertyChangedEventHandler? PropertyChanged;
-
     public ICommand OkCommand => okCommand;
     public ICommand CancelCommand => cancelCommand;
 
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    private string chatName;
+    public string ChatName
+    {
+        get => chatName;
+        set
+        {
+            chatName = value;
+            OnPropertyChanged(nameof(ChatName));
+        }
+    }
+
+    private DimaChatService signal;
+    private Window window;
     private Command okCommand;
     private Command cancelCommand;
+    private int clientId;
 
-    public AddChatViewModel(Window window)
+    public AddChatViewModel(Window window, DimaChatService signal, int clientId)
     {
         this.window = window;
-        chatModel=new ChatModel();
+        this.signal = signal;
+        this.clientId = clientId;
         okCommand = new DelegateCommand(_ => Ok());
         cancelCommand = new DelegateCommand(_ => Cancel());
     }
 
-    private void Ok()
+    private async void Ok()
     {
-        ClientModel client=new ClientModel();
-        client.Connect();
-        client.SendMessage((int)ServerCommands.AddChat, chatModel.Name);
+        MessageBox.Show(chatName);
+        await signal.PushNewChat(chatName, clientId);
+        window.DialogResult = true;
         window.Close();
     }
 
     private void Cancel()
     {
+        window.DialogResult = false;
         window.Close(); 
     }
 

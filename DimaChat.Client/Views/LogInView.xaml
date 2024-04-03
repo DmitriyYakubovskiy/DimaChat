@@ -44,8 +44,8 @@
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: " />
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Password: "/>
 
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Client.Name}"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Client.Password}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Password}"/>
 
         <Button Grid.Column="0" Grid.Row="5" Content="Ok" HorizontalAlignment="Left" Width="75" Command="{Binding OkCommand}"/>
         <Button Grid.Column="1"  Grid.Row="5" Content="Register" HorizontalAlignment="Left" Width="75" Command="{Binding RegCommand}"/>

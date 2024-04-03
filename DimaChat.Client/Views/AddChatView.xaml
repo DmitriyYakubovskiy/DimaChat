@@ -40,9 +40,9 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Chat name: " />
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Chat.Name}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ChatName}"/>
 
         <Button Grid.Column="0" Grid.Row="3" Content="Ok" HorizontalAlignment="Left" Width="75" Command="{Binding OkCommand}"/>
-        <Button Grid.Column="1"  Grid.Row="3" Content="Register" HorizontalAlignment="Left" Width="75" Command="{Binding CancelCommand}"/>
+        <Button Grid.Column="1"  Grid.Row="3" Content="Cancel" HorizontalAlignment="Left" Width="75" Command="{Binding CancelCommand}"/>
     </Grid>
 </Window>

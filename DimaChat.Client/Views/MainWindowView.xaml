@@ -16,8 +16,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
 
@@ -26,7 +26,7 @@
 
 
         <ListBox
-        Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"
+        Grid.Column="1" Grid.Row="0" Grid.RowSpan="4"
         ItemsSource="{Binding Chats}"
         HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
@@ -38,8 +38,8 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="{Binding Name}" HorizontalAlignment="Center" FontFamily="Tahoma" FontSize="14" Width="100"/>
                         <Button Grid.Column="1" Content="Open"
-                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}},Path=DataContext.EditBookCommand}"
-                            CommandParameter="{Binding OpenChatCommand}"  Width="65"/>
+                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}},Path=DataContext.OpenChatCommand}"
+                                CommandParameter="{Binding}"  Width="65"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

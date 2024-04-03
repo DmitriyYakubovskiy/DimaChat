@@ -1,7 +1,23 @@
 {
   "version": 3,
   "targets": {
-    "net8.0-windows10.0.17763": {
+    "net8.0": {
+      "AutoMapper/13.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Options": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Castle.Core/5.1.1": {
         "type": "package",
         "dependencies": {
@@ -492,25 +508,41 @@
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
       },
-      "DimaChat.Client/1.0.0": {
+      "DimaChat.DataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Json": "8.0.0"
+          "AutoMapper": "13.0.1",
+          "Microsoft.EntityFrameworkCore": "8.0.3",
+          "Microsoft.EntityFrameworkCore.Proxies": "8.0.3",
+          "Microsoft.Extensions.Configuration.Json": "8.0.0",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.2"
         },
         "compile": {
-          "bin/placeholder/DimaChat.Client.dll": {}
+          "bin/placeholder/DimaChat.DataAccess.dll": {}
         },
         "runtime": {
-          "bin/placeholder/DimaChat.Client.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.WindowsDesktop.App.WPF"
-        ]
+          "bin/placeholder/DimaChat.DataAccess.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "AutoMapper/13.0.1": {
+      "sha512": "/Fx1SbJ16qS7dU4i604Sle+U9VLX+WSNVJggk6MupKVkYvvBm4XqYaeFuf67diHefHKHs50uQIS2YEDFhPCakQ==",
+      "type": "package",
+      "path": "automapper/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "automapper.13.0.1.nupkg.sha512",
+        "automapper.nuspec",
+        "icon.png",
+        "lib/net6.0/AutoMapper.dll",
+        "lib/net6.0/AutoMapper.xml"
+      ]
+    },
     "Castle.Core/5.1.1": {
       "sha512": "rpYtIczkzGpf+EkZgDr9CClTdemhsrwA/W5hMoPjLkRFnXzH44zDLoovXeKtmxb1ykXK9aJVODSpiJml8CTw2g==",
       "type": "package",
@@ -1303,18 +1335,17 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "DimaChat.Client/1.0.0": {
+    "DimaChat.DataAccess/1.0.0": {
       "type": "project",
-      "path": "../DimaChat.Client/DimaChat.Client.csproj",
-      "msbuildProject": "../DimaChat.Client/DimaChat.Client.csproj"
+      "path": "../DimaChat.DataAccess/DimaChat.DataAccess.csproj",
+      "msbuildProject": "../DimaChat.DataAccess/DimaChat.DataAccess.csproj"
     }
   },
   "projectFileDependencyGroups": {
-    "net8.0-windows10.0.17763": [
-      "DimaChat.Client >= 1.0.0",
+    "net8.0": [
+      "DimaChat.DataAccess >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.3",
       "Microsoft.EntityFrameworkCore.Proxies >= 8.0.3",
-      "Microsoft.Extensions.Configuration.Json >= 8.0.0",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.2"
     ]
   },
@@ -1335,18 +1366,21 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net8.0-windows10.0.17763.0"
+        "net8.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net8.0-windows10.0.17763": {
-          "targetAlias": "net8.0-windows10.0.17763.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\DimaChat.Client.csproj": {
-              "projectPath": "D:\\Programming\\Exam\\DimaChat\\DimaChat.Client\\DimaChat.Client.csproj"
+            "D:\\Programming\\Exam\\DimaChat\\DataAccess\\DimaChat.DataAccess.csproj": {
+              "projectPath": "D:\\Programming\\Exam\\DimaChat\\DataAccess\\DimaChat.DataAccess.csproj"
+            },
+            "D:\\Programming\\Exam\\DimaChat\\DimaChat.DataAccess\\DimaChat.DataAccess.csproj": {
+              "projectPath": "D:\\Programming\\Exam\\DimaChat\\DimaChat.DataAccess\\DimaChat.DataAccess.csproj"
             }
           }
         }
@@ -1363,8 +1397,8 @@
       }
     },
     "frameworks": {
-      "net8.0-windows10.0.17763": {
-        "targetAlias": "net8.0-windows10.0.17763.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -1373,10 +1407,6 @@
           "Microsoft.EntityFrameworkCore.Proxies": {
             "target": "Package",
             "version": "[8.0.3, )"
-          },
-          "Microsoft.Extensions.Configuration.Json": {
-            "target": "Package",
-            "version": "[8.0.0, )"
           },
           "Npgsql.EntityFrameworkCore.PostgreSQL": {
             "target": "Package",
@@ -1394,17 +1424,11 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.Windows.SDK.NET.Ref",
-            "version": "[10.0.17763.31, 10.0.17763.31]"
-          }
-        ],
         "frameworkReferences": {
-          "Microsoft.NETCore.App": {
-            "privateAssets": "all"
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
           },
-          "Microsoft.Windows.SDK.NET.Ref": {
+          "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
