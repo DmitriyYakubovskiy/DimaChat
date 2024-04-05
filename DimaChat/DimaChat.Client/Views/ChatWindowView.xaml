@@ -38,7 +38,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="1" Grid.Row="0" Content="Add client" Command="{Binding AddClientCommand}"/>
+        <Button Grid.Column="1" Grid.Row="0" Content="Add client" Command="{Binding AddClientCommand}" HorizontalAlignment="Stretch"/>
         <TextBlock Grid.Column="0" Grid.Row="0"  Text="{Binding ChatName}"/>
         <ListBox
         ItemsSource="{Binding Messages}"
@@ -59,6 +59,6 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <TextBox Grid.Row="2" Grid.Column="0" Text="{Binding Message}"/>
-        <Button Grid.Row="3" Grid.Column="1" Content="Send Message" Command="{Binding SendMessageCommand}"/>
+        <Button Grid.Row="3" Grid.Column="1" Content="Send Message" Command="{Binding SendMessageCommand}" HorizontalAlignment="Stretch"/>
     </Grid>
 </Window>

@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 
 namespace DimaChat.Client.ViewModels;
-
 /// <summary>
 /// Логика взаимодействия для RegisterView.xaml
 /// </summary>

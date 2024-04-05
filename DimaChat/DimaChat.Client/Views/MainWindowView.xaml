@@ -37,17 +37,19 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
 
-        <Button Grid.Column="0" Grid.Row="0" Content="Add Chat" Command="{Binding AddChatCommand}"/>
-        <TextBox Grid.Column="0" Grid.Row="1" Text="{Binding Client.Name}" Name="NameTextBox" IsReadOnly="True"/>
+        <Button Grid.Column="0" Grid.Row="0" Content="Add Chat" Command="{Binding AddChatCommand}" HorizontalAlignment="Stretch"/>
+        <Button Grid.Column="0" Grid.Row="1" Content="Refresh" Command="{Binding RefreshCommand}" HorizontalAlignment="Stretch"/>
+        <TextBox Grid.Column="0" Grid.Row="2" Text="{Binding Client.Name}" Name="NameTextBox" IsReadOnly="True" HorizontalAlignment="Stretch"/>
 
 
         <ListBox
-        Grid.Column="1" Grid.Row="0" Grid.RowSpan="4"
+        Grid.Column="1" Grid.Row="0" Grid.RowSpan="5"
         ItemsSource="{Binding Chats}"
         HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>

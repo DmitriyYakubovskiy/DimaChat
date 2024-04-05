@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace DimaChat.Client.ViewModels;
+
 public class RegisterViewModel
 {    public ICommand OkCommand => okCommand;
     public ICommand CancelCommand => cancelCommand;

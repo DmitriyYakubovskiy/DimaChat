@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using DimaChat.DataAccess.Entities;
-using DimaChat.DataAccess.Mappers;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace DimaChat.DataAccess.Models;

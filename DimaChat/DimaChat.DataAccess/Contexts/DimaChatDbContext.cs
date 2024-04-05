@@ -1,9 +1,7 @@
 ﻿using DimaChat.DataAccess.Configurations;
 using DimaChat.DataAccess.Entities;
-using DimaChat.DataAccess.Mappers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace DimaChat.Server.DataAccess.Contexts;
 

@@ -63,6 +63,11 @@ public class DimaChatService
         });
     }
 
+    public void RemoveRecieveMessage()
+    {
+        connection.Remove("Receive");
+    }
+
     public async Task AddClientToChat(string clientName, int chatId)
     {
         await connection.SendAsync("AddClientToChat",clientName,chatId);
@@ -70,12 +75,12 @@ public class DimaChatService
 
     public async Task PushNewChat(string chatName, int clientId)
     {
-        await connection.SendAsync("GetNewChat", chatName, clientId);
+        await connection.SendAsync("AddChat", chatName, clientId);
     }
 
-    public async Task SendChatsRequest(int chatId)
+    public async Task SendChatsRequest(int clientId)
     {
-        await connection.SendAsync("PushChats", chatId);
+        await connection.SendAsync("PushChats", clientId);
     }
 
     public async Task SendMessage(MessageModel message)
@@ -91,5 +96,15 @@ public class DimaChatService
     public async Task SendRegistrationMessage(string name, string password)
     {
         await connection.SendAsync("RegistrationSend", name, password);
+    }
+
+    public async Task JoinToChat(int chatId)
+    {
+        await connection.SendAsync("Join", chatId);
+    }
+
+    public async Task LeaveFromChat(int chatId)
+    {
+        await connection.SendAsync("Leave", chatId);
     }
 }

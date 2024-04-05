@@ -1,5 +1,4 @@
-﻿using DimaChat.DataAccess.Collections;
-using DimaChat.DataAccess.Entities;
+﻿using DimaChat.DataAccess.Entities;
 using DimaChat.DataAccess.Models;
 using DimaChat.Server.Managers;
 using Microsoft.AspNetCore.SignalR;
@@ -21,8 +20,8 @@ public class ServerHub : Hub
 
     public async Task Send(MessageModel message)
     {
-        Console.WriteLine(message);
-        await this.Clients.All.SendAsync("Receive", message);
+        Console.WriteLine(message.ToString());
+        await Clients.OthersInGroup(message.ChatId.ToString()).SendAsync("Receive", message);
     }
 
     public async Task AuthorizeSend(string name, string password)
@@ -35,28 +34,28 @@ public class ServerHub : Hub
         await Clients.Caller.SendAsync("RegistrationReceive", RegistrationVerification(name, password));
     }
 
-    public async Task Join(MessageModel message)
+    public async Task Join(int chatId)
     {
         try
         {
-            await Groups.AddToGroupAsync(Context.ConnectionId, message.ChatId.ToString());
-            await Clients.OthersInGroup(message.ChatId.ToString()).SendAsync("JoinToChat", new MessageModelsCollection());
+            await Groups.AddToGroupAsync(Context.ConnectionId, chatId.ToString());
+            //await Clients.OthersInGroup(message.ChatId.ToString()).SendAsync("JoinToChat", new MessageModelsCollection());
         }
         catch (Exception ex)
         {
-            await Clients.Caller.SendAsync("Error", "You failed to join the chat!" + ex.Message);
+            await Clients.Caller.SendAsync("Error", "Ошибка подключения!" + ex.Message);
         }
     }
 
-    public async Task Leave(MessageModel message)
+    public async Task Leave(int chatId)
     {
         try
         {
-            await Groups.RemoveFromGroupAsync(Context.ConnectionId, message.ChatId.ToString());
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, chatId.ToString());
         }
         catch (Exception ex)
         {
-            await Clients.Caller.SendAsync("Error", "You failed to leave from the chat!" + ex.Message);
+            await Clients.Caller.SendAsync("Error", ex.Message);
         }
     }
 
@@ -71,15 +70,16 @@ public class ServerHub : Hub
         databaseManager.UpdateChatClientEntities(new ChatClientEntity() { ClientId=(int)clientId, ChatId=chatId});
     }
 
-    public async Task GetNewChat(string chatName, int clientId)
+    public async Task AddChat(string chatName, int clientId)
     {
-        int? chatId = databaseManager.GetChatEntities().FirstOrDefault(x => x.ChatName == chatName)?.ChatId;
-        if (chatId != null)
+        var chat=chats.FirstOrDefault(x=>x.Name == chatName);
+        if (chats == default)
         {
             await Clients.Caller.SendAsync("Error", "Чат с таким именем уже существует");
             return;
         }
         databaseManager.UpdateChats(new ChatModel { Name=chatName});
+        int? chatId = databaseManager.GetChatEntities().FirstOrDefault(x => x.ChatName == chatName)?.ChatId;
         databaseManager.UpdateChatClientEntities(new ChatClientEntity() { ClientId = clientId, ChatId = (int)chatId! });
         chats = databaseManager.GetChatModels();
         await PushChats(clientId);

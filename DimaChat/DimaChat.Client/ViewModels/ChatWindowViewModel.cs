@@ -3,8 +3,6 @@ using DimaChat.Client.Services;
 using DimaChat.Client.Views;
 using DimaChat.DataAccess.Collections;
 using DimaChat.DataAccess.Models;
-using Microsoft.AspNetCore.SignalR.Client;
-using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -60,6 +58,7 @@ public class ChatWindowViewModel : INotifyPropertyChanged
         this.chatId = chatId;
         signal.ReceiveMessages();
         signal.MessageArrived += AddMessage;
+        Task.Run(() => signal.JoinToChat(chatId));
         messageCollection = new MessageModelsCollection();
         messageCollection.CollectionChanged += (_, e) =>
         {
@@ -84,6 +83,7 @@ public class ChatWindowViewModel : INotifyPropertyChanged
         if (message == String.Empty) return;
         var messageModel = new MessageModel(client.Name, message, chatId);
         await signal.SendMessage(messageModel);
+        await App.Current.Dispatcher.BeginInvoke(new Action(() => { messageCollection.AddMessage(messageModel); }));
         message = String.Empty;
         OnPropertyChanged(nameof(Message));
     }
@@ -97,6 +97,8 @@ public class ChatWindowViewModel : INotifyPropertyChanged
 
     private void OnWindowClosing(object sender, CancelEventArgs e)
     {
+        Task.Run(()=>signal.LeaveFromChat(chatId));
+        signal.RemoveRecieveMessage();
         signal.MessageArrived -= AddMessage;
         window.DialogResult = true;
     }

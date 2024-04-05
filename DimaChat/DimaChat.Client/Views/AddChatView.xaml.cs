@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 
 namespace DimaChat.Client.Views;
-
 /// <summary>
 /// Логика взаимодействия для AddChatView.xaml
 /// </summary>

@@ -16,6 +16,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
     public IReadOnlyCollection<ChatModel> Chats => chatCollection.Chats;
     public ICommand AddChatCommand => addChatCommand;
     public ICommand OpenChatCommand => openChatCommand;
+    public ICommand RefreshCommand => refreshCommand;
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -35,6 +36,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
     private Window window;
     private readonly Command openChatCommand;
     private readonly Command addChatCommand;
+    private readonly Command refreshCommand;
 
     public MainWindowViewModel(Window window, ClientModel client, DimaChatService signal)
     {
@@ -43,6 +45,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
         this.signal = signal;
         openChatCommand = new GenericCommand<ChatModel>(OpenChat);
         addChatCommand = new DelegateCommand(_ => AddChat());
+        refreshCommand = new DelegateCommand(_ => Refresh());
         chatCollection = new ChatModelsCollection();
         chatCollection.CollectionChanged += (_, e) =>
         {
@@ -70,6 +73,11 @@ public class MainWindowViewModel : INotifyPropertyChanged
         var addChatWindow = new AddChatView(window);
         addChatWindow.DataContext = new AddChatViewModel(addChatWindow, signal, client.Id);
         if (addChatWindow.ShowDialog() != true) return;
+        await signal.SendChatsRequest(client.Id);
+    }
+
+    private async Task Refresh()
+    {
         await signal.SendChatsRequest(client.Id);
     }
 
