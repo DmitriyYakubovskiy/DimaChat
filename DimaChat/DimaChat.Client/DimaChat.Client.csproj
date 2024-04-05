@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DimaChat.DataAccess.csproj" />
     <ProjectReference Include="..\DimaChat.DataAccess\DimaChat.DataAccess.csproj" />
   </ItemGroup>
 
