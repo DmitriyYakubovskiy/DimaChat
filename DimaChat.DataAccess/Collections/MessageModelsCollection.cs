@@ -33,9 +33,4 @@ public class MessageModelsCollection : INotifyCollectionChanged
     {
         CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(action, changedItems));
     }
-
-    private void OnPropertyChanged(NotifyCollectionChangedAction action)
-    {
-        CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(action));
-    }
 }

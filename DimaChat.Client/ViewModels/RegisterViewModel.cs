@@ -17,64 +17,90 @@ public class RegisterViewModel
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    private ClientModel client;
-    public ClientModel Client
+    private string name = "";
+    public string Name
     {
-        get => client;
+        get => name;
         set
         {
-            client = value;
-            OnPropertyChanged();
+            name = value;
+            OnPropertyChanged(nameof(Name));
         }
     }
 
+    private string password = "";
+    public string Password
+    {
+        get => password;
+        set
+        {
+            password = value;
+            OnPropertyChanged(nameof(Password));
+        }
+    }
+
+    private ClientModel client;
     private Window window;
     private Command cancelCommand;
     private Command okCommand;
-    private bool? isRegistered = null!;
+    private bool serverResponse = false;
 
     public RegisterViewModel(Window window)
     {
         okCommand = new DelegateCommand(_ => Ok());
         cancelCommand = new DelegateCommand(_ => Cancel());
-        client = new ClientModel();
         this.window = window;
     }
 
-    private void SetRegistration(bool? b)
+    private void SetRegistrationInfo(ClientModel client)
     {
-        isRegistered = b;
+        serverResponse = true;
+        if (client == null) this.client = null!;
+        else this.client = client.Clone() as ClientModel;
     }
 
     private async void Ok()
     {
         try
         {
+            if (name?.Length < 3 || password?.Length < 3)
+            {
+                MessageBox.Show("Пароль и имя должны быть длиннее 2 символов");
+                return;
+            }
             HubConnection connection = App.HubConnectionConfiguration();
-
             DimaChatService signal = new DimaChatService(connection);
+            int waitingTime = 10;
+
             await signal.ConnectAsync();
-            await signal.SendRegistrationMessage(client.Name, client.Password);
+            await signal.SendRegistrationMessage(Name, Password);
             signal.ReceiveRegistrationMessage();
-            signal.RegistartionResponseArrived+=SetRegistration;
+            signal.RegistartionResponseArrived += SetRegistrationInfo;
+
             Stopwatch stopwatch = Stopwatch.StartNew();
             while (true)
             {
-                if (isRegistered != null || stopwatch.Elapsed.TotalSeconds >= 10) break;
+                if (serverResponse) break;
+                if (stopwatch.Elapsed.TotalSeconds >= waitingTime)
+                {
+                    MessageBox.Show("Превышено время ожидания");
+                    signal.AuthorizationResponseArrived -= SetRegistrationInfo;
+                    return;
+                }
                 Task.Delay(100).Wait();
             }
             stopwatch.Stop();
 
-            if (isRegistered == null) MessageBox.Show("Превышено время ожидания");
-            else if (isRegistered == true)
+            if (client != null)
             {
                 window.Close();
             }
             else
             {
-                MessageBox.Show("Ошибка");
+                MessageBox.Show("Пользватель с таким именем уже существует");
             }
-            signal.RegistartionResponseArrived-=SetRegistration;
+            signal.RegistartionResponseArrived -= SetRegistrationInfo;
+            serverResponse = false;
         }
         catch (SocketException ex)
         {
@@ -84,16 +110,6 @@ public class RegisterViewModel
         {
             MessageBox.Show($"Exception: {ex.Message}");
         }
-    }
-
-    private bool CanOk()
-    {
-        if (client.Name?.Length < 3 || client.Password?.Length < 3)
-        {
-            MessageBox.Show("The field length is less than three characters");
-            return false;
-        }
-        return true;
     }
 
     private void Cancel()

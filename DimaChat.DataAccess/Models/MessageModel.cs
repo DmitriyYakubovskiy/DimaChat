@@ -35,7 +35,7 @@ public class MessageModel : INotifyPropertyChanged, ICloneable
         get => content;
         set
         {
-            name = value;
+            content = value;
             OnPropertyChanged();
         }
     }

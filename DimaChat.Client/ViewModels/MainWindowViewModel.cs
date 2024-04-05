@@ -41,7 +41,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
         this.client = client;
         this.window = window;
         this.signal = signal;
-        openChatCommand = new DelegateCommand(_ => OpenChat());
+        openChatCommand = new GenericCommand<ChatModel>(OpenChat);
         addChatCommand = new DelegateCommand(_ => AddChat());
         chatCollection = new ChatModelsCollection();
         chatCollection.CollectionChanged += (_, e) =>
@@ -52,19 +52,20 @@ public class MainWindowViewModel : INotifyPropertyChanged
             }
         };
         signal.ReceiveChats();
+        signal.RecieveError();
         signal.ChatsArrived += AddChats;
-        signal.SendChatsRequest(client.Id);
+        Task.Run(() => signal.SendChatsRequest(client.Id));
         window.Closing += WindowClosing;
     }
 
-    public void OpenChat()
+    private void OpenChat(ChatModel chatModel)
     {
         var chatWindow = new ChatWindowView(window);
-        chatWindow.DataContext = new ChatWindowViewModel(client);
-        chatWindow.Show();
+        chatWindow.DataContext = new ChatWindowViewModel(chatWindow ,client, signal, chatModel.Name, chatModel.Id);
+        if (chatWindow.ShowDialog() != true) return;
     }
 
-    public async Task AddChat()
+    private async Task AddChat()
     {
         var addChatWindow = new AddChatView(window);
         addChatWindow.DataContext = new AddChatViewModel(addChatWindow, signal, client.Id);
@@ -81,6 +82,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
     private void WindowClosing(object sender, CancelEventArgs e)
     {
         signal.ChatsArrived-= AddChats;
+        window.DialogResult = true;
     }
 
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)

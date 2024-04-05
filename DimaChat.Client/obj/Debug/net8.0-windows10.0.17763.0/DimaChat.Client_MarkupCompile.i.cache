@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\Programming\Exam\DimaChat\DimaChat.Client\Views\App.xaml
-52034064819
+6-867880369
 
-20669957922
+21-724994218
 233-67545565
-Views\AddChatView.xaml;Views\ChatWindowView.xaml;Views\LogInView.xaml;Views\MainWindowView.xaml;Views\RegisterView.xaml;
+Views\AddChatView.xaml;Views\AddClientView.xaml;Views\ChatWindowView.xaml;Views\LogInView.xaml;Views\MainWindowView.xaml;Views\RegisterView.xaml;
 
 True
 

@@ -4,9 +4,11 @@ using DimaChat.Client.Views;
 using DimaChat.DataAccess.Collections;
 using DimaChat.DataAccess.Models;
 using Microsoft.AspNetCore.SignalR.Client;
+using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Input;
 
 namespace DimaChat.Client.ViewModels;
@@ -14,9 +16,21 @@ namespace DimaChat.Client.ViewModels;
 public class ChatWindowViewModel : INotifyPropertyChanged
 {
     public ICommand SendMessageCommand => sendMessageCommand;
+    public ICommand AddClientCommand => addClientCommand;
     public IReadOnlyCollection<MessageModel> Messages => messageCollection.Messages;
 
     public event PropertyChangedEventHandler? PropertyChanged;
+
+    private string chatName = "";
+    public string ChatName
+    {
+        get => chatName;
+        set
+        {
+            chatName = value;
+            OnPropertyChanged(nameof(chatName));
+        }
+    }
 
     private string message = "";
     public string Message
@@ -29,21 +43,24 @@ public class ChatWindowViewModel : INotifyPropertyChanged
         }
     }
 
+    private Window window;
     private Command sendMessageCommand;
+    private Command addClientCommand;
     private MessageModelsCollection messageCollection;
     private DimaChatService signal;
     private ClientModel client;
-    private int index = 1;
+    private int chatId;
 
-    public ChatWindowViewModel(ClientModel client)
+    public ChatWindowViewModel(Window window, ClientModel client, DimaChatService signal, string chatName, int chatId)
     {
-        HubConnection connection = App.HubConnectionConfiguration();
-
-        messageCollection = new MessageModelsCollection();
-        signal = new DimaChatService(connection,client);
-        signal.ConnectAsync();
+        this.window = window;
+        this.client = client;
+        this.signal = signal;
+        this.chatName = $"Chat name: {chatName}";
+        this.chatId = chatId;
         signal.ReceiveMessages();
-        //messageCollection = client.GetMessageModelsCollection();
+        signal.MessageArrived += AddMessage;
+        messageCollection = new MessageModelsCollection();
         messageCollection.CollectionChanged += (_, e) =>
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
@@ -51,16 +68,37 @@ public class ChatWindowViewModel : INotifyPropertyChanged
                 OnPropertyChanged(nameof(Messages));
             }
         };
-        this.client = client;
-        sendMessageCommand = new DelegateCommand(_ => SendMessage());
+        sendMessageCommand = new DelegateCommand(_ => Task.Run(()=>SendMessage()));
+        addClientCommand = new DelegateCommand(_ => AddClient());
+        this.window.Closing += OnWindowClosing;
     }
 
-    public async void SendMessage()
+    private void AddMessage(MessageModel messageModel)
     {
-        var messageModel = new MessageModel(client.Name, message, index);
+        App.Current.Dispatcher.BeginInvoke(new Action(() => { messageCollection.AddMessage(messageModel); }));
+        OnPropertyChanged(nameof(Messages));
+    }
+
+    private async Task SendMessage()
+    {
+        if (message == String.Empty) return;
+        var messageModel = new MessageModel(client.Name, message, chatId);
         await signal.SendMessage(messageModel);
         message = String.Empty;
         OnPropertyChanged(nameof(Message));
+    }
+
+    private void AddClient()
+    {
+        var addClientWindow = new AddClientView(window);
+        addClientWindow.DataContext = new AddClientViewModel(addClientWindow, signal, chatId);
+        if (addClientWindow.ShowDialog() != true) return;
+    }
+
+    private void OnWindowClosing(object sender, CancelEventArgs e)
+    {
+        signal.MessageArrived -= AddMessage;
+        window.DialogResult = true;
     }
 
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)

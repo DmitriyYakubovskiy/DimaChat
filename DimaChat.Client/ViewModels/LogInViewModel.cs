@@ -19,7 +19,7 @@ public class LogInViewModel:INotifyPropertyChanged
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    private string name;
+    private string name = "";
     public string Name
     {
         get => name;
@@ -30,7 +30,7 @@ public class LogInViewModel:INotifyPropertyChanged
         }
     }
 
-    private string password;
+    private string password = "";
     public string Password
     {
         get => password;
@@ -45,7 +45,7 @@ public class LogInViewModel:INotifyPropertyChanged
     private Window window;
     private Command okCommand;
     private Command regCommand;
-    private bool isAuthorized = false;
+    private bool serverResponse = false;
 
     public LogInViewModel(Window window)
     {
@@ -56,7 +56,7 @@ public class LogInViewModel:INotifyPropertyChanged
 
     private void SetAuthorizationInfo(ClientModel client)
     {
-        isAuthorized = true;
+        serverResponse = true;
         if (client == null) this.client = null!;
         else this.client=client.Clone() as ClientModel;
     }
@@ -65,6 +65,11 @@ public class LogInViewModel:INotifyPropertyChanged
     {
         try
         {
+            if (name?.Length < 1 || password?.Length < 1)
+            {
+                MessageBox.Show("Пустое поле ввода!");
+                return;
+            }
             HubConnection connection = App.HubConnectionConfiguration();
             DimaChatService signal = new DimaChatService(connection);
             int waitingTime = 10;
@@ -81,7 +86,7 @@ public class LogInViewModel:INotifyPropertyChanged
             Stopwatch stopwatch = Stopwatch.StartNew();
             while (true)
             {
-                if (isAuthorized) break;
+                if (serverResponse) break;
                 if (stopwatch.Elapsed.TotalSeconds >= waitingTime)
                 {
                     MessageBox.Show("Превышено время ожидания");
@@ -96,14 +101,14 @@ public class LogInViewModel:INotifyPropertyChanged
             {
                 var mainWindow = new MainWindow(window);
                 mainWindow.DataContext = new MainWindowViewModel(mainWindow, client, signal);
-                mainWindow.Show();
+                if (mainWindow.ShowDialog()!=true) return;
             }
             else
             {
                 MessageBox.Show("Неверный логин или пароль");
             }
             signal.AuthorizationResponseArrived -= SetAuthorizationInfo;
-            isAuthorized = false;
+            serverResponse = false;
         }
         catch(SocketException ex)
         {
@@ -120,7 +125,7 @@ public class LogInViewModel:INotifyPropertyChanged
         var window = new RegisterView();
         var viewModel = new RegisterViewModel(window);
         window.DataContext = viewModel;
-        window.Show();
+        if (window.ShowDialog() != true) return;
     }
 
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -1,6 +1,5 @@
 ﻿using DimaChat.Client.Commands;
 using DimaChat.Client.Services;
-using DimaChat.DataAccess.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -15,7 +14,7 @@ public class AddChatViewModel: INotifyPropertyChanged
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    private string chatName;
+    private string chatName = "";
     public string ChatName
     {
         get => chatName;
@@ -43,7 +42,11 @@ public class AddChatViewModel: INotifyPropertyChanged
 
     private async void Ok()
     {
-        MessageBox.Show(chatName);
+        if (chatName.Length < 1)
+        {
+            MessageBox.Show("Пустое поле ввода!");
+            return;
+        }
         await signal.PushNewChat(chatName, clientId);
         window.DialogResult = true;
         window.Close();

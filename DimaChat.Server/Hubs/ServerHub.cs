@@ -60,10 +60,27 @@ public class ServerHub : Hub
         }
     }
 
+    public async Task AddClientToChat(string clientName, int chatId)
+    {
+        int? clientId = clients.FirstOrDefault(x => x.Name == clientName)?.Id;
+        if (clientId == null)
+        {
+            await Clients.Caller.SendAsync("Error", "Пользователя с таким именем нет");
+            return;
+        }
+        databaseManager.UpdateChatClientEntities(new ChatClientEntity() { ClientId=(int)clientId, ChatId=chatId});
+    }
+
     public async Task GetNewChat(string chatName, int clientId)
     {
+        int? chatId = databaseManager.GetChatEntities().FirstOrDefault(x => x.ChatName == chatName)?.ChatId;
+        if (chatId != null)
+        {
+            await Clients.Caller.SendAsync("Error", "Чат с таким именем уже существует");
+            return;
+        }
         databaseManager.UpdateChats(new ChatModel { Name=chatName});
-        databaseManager.UpdateChatClientEntities(new ChatClientEntity() { ClientId = clientId, ChatId = databaseManager.GetChatEntities().FirstOrDefault(x => x.ChatName == chatName).ChatId });
+        databaseManager.UpdateChatClientEntities(new ChatClientEntity() { ClientId = clientId, ChatId = (int)chatId! });
         chats = databaseManager.GetChatModels();
         await PushChats(clientId);
     }
@@ -76,7 +93,7 @@ public class ServerHub : Hub
         {
             if (chatClient[i].ClientId == clientId)
             {
-                resultChats.Add(chats.FirstOrDefault(x => x.Id == chatClient[i].ChatId));
+                resultChats.Add(chats.FirstOrDefault(x => x.Id == chatClient[i].ChatId)!);
             }
         } 
         await Clients.Caller.SendAsync("ReceiveChats", resultChats);
@@ -91,16 +108,16 @@ public class ServerHub : Hub
         return client;
     }
 
-    private bool RegistrationVerification(string name, string password)
+    private ClientModel RegistrationVerification(string name, string password)
     {
-        Console.WriteLine(1);
         var clients = databaseManager.GetClientModels();
         var client = clients.FirstOrDefault(x => x.Name == name);
         if (client == null)
         {
             databaseManager.UpdateClients(new ClientModel() { Name = name, Password = password });
-            return true;
+            clients=databaseManager.GetClientModels();
+            return clients.FirstOrDefault(x => x.Name == name)!;
         }
-        return false;
+        return null!;
     }
 }

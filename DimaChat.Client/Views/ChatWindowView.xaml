@@ -7,18 +7,42 @@
         mc:Ignorable="d"
         Title="ChatWindow" Height="450" Width="400"
         WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Tahoma"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="Tahoma"/>
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontFamily" Value="Tahoma"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Margin" Value="1"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*" />
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        <Button Grid.Column="1" Grid.Row="0" Content="Add client" Command="{Binding AddClientCommand}"/>
+        <TextBlock Grid.Column="0" Grid.Row="0"  Text="{Binding ChatName}"/>
         <ListBox
         ItemsSource="{Binding Messages}"
-        Grid.Row="0" Grid.Column="0"
+        Grid.Row="1" Grid.Column="0"
         HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -28,13 +52,13 @@
                             <ColumnDefinition Width="10"/>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"  Text="{Binding Name}"/>
-                        <TextBlock Grid.Column="2"  Text="{Binding Content}"/>
+                        <TextBlock Grid.Column="0"  Text="{Binding Name}" FontSize="14"/>
+                        <TextBlock Grid.Column="2"  Text="{Binding Content}" FontSize="14"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding Message}"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="Send Message" Command="{Binding SendMessageCommand}"/>
+        <TextBox Grid.Row="2" Grid.Column="0" Text="{Binding Message}"/>
+        <Button Grid.Row="3" Grid.Column="1" Content="Send Message" Command="{Binding SendMessageCommand}"/>
     </Grid>
 </Window>

@@ -8,18 +8,15 @@ public class DimaChatService
 {
     public event Action<List<ChatModel>> ChatsArrived;
     public event Action<ClientModel> AuthorizationResponseArrived;
-    public event Action<bool?> RegistartionResponseArrived;
+    public event Action<MessageModel> MessageArrived;
+    public event Action<ClientModel> RegistartionResponseArrived;
 
     private readonly HubConnection connection;
-    private ClientModel client;
 
-    public DimaChatService(HubConnection connection, ClientModel clientModel)
+    public DimaChatService(HubConnection connection)
     {
         this.connection = connection;
-        client = clientModel;
     }
-
-    public DimaChatService(HubConnection connection) :this(connection,new ClientModel()) { }
 
     public async Task ConnectAsync()
     {
@@ -30,10 +27,7 @@ public class DimaChatService
     {
         connection.On<MessageModel>("Receive",  (message)=>
         {
-            //App.Current.Dispatcher.Invoke(delegate
-            //{
-            //    chat.Add(message);
-            //});
+            MessageArrived?.Invoke(message);
         });
     }
 
@@ -47,9 +41,9 @@ public class DimaChatService
 
     public void ReceiveRegistrationMessage()
     {
-        connection.On<bool>("RegistrationReceive", (isRegistered) =>
+        connection.On<ClientModel>("RegistrationReceive", (client) =>
         {
-            RegistartionResponseArrived?.Invoke(isRegistered);
+            RegistartionResponseArrived?.Invoke(client);
         });
     }
 
@@ -59,6 +53,19 @@ public class DimaChatService
         {
             ChatsArrived?.Invoke(chats);
         });
+    }
+
+    public void RecieveError()
+    {
+        connection.On<string>("Error", (errorMessage) =>
+        {
+            MessageBox.Show(errorMessage);
+        });
+    }
+
+    public async Task AddClientToChat(string clientName, int chatId)
+    {
+        await connection.SendAsync("AddClientToChat",clientName,chatId);
     }
 
     public async Task PushNewChat(string chatName, int clientId)
